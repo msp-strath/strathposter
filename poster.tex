@@ -1,0 +1,130 @@
+\documentclass[pdftex
+              ,a0paper
+              ,fontscale=0.25
+              ,landscape
+              ,final]{baposter}
+
+% -- Imports
+
+\usepackage{fixmath}
+\usepackage[fleqn,tbtags]{mathtools}
+\usepackage[all,error]{onlyamsmath}
+
+\usepackage{strathclyde-colours}
+\usepackage[columns=4]{strathclyde-poster}
+
+\usepackage{lmodern}
+\usepackage{multicol}
+
+% -- Preamble
+\graphicspath{{image/},{figure/},{logo/}}
+
+\DeclareGraphicsExtensions{.pdf,.png,.eps,.gif,.jpg}
+
+%% \RequirePackage[backend=biber,
+%%                 style=ieee,
+%%                 doi=false,
+%%                 url=false,
+%%                 isbn=false,
+%%                 maxnames=1,
+%%                 minnames=1,
+%%                 natbib=true]{biblatex}
+
+%% Biblatex
+%\defbibheading{poster}{\vskip 0.1em}
+%\renewcommand{\bibfont}{\footnotesize\sffamily}
+
+
+% -- Metadata
+
+\title{Super Awesome Research}
+
+\author{Superawesome Researcher Fellow}
+
+\institute{Mathematical Structured Programming, University of Strathclyde}
+
+\logocommand{\includegraphics
+                 [height=0.08\paperheight]
+                 {strath_science}}
+
+
+\begin{document}
+\begin{strathclydeposter}
+
+\begin{posterbox}[name=research,column=0]{A}
+
+\end{posterbox}
+
+\begin{posterbox}[name=aa,column=3]{A}
+
+\end{posterbox}
+
+\begin{posterbox}
+  [ name=message
+  , column=1
+  , span=2
+  , textborder=rounded
+  , headershape=rounded
+  , boxshade=plain
+  , boxColorOne=strath-blue
+  , textfont=\sffamily\large\color{white}
+  ]{\phantom{a}}
+
+  \begin{center}
+    aaa
+
+
+
+    aaa
+  \end{center}
+  \vspace{1em}
+\end{posterbox}
+
+
+%\begin{posterbox}[name=motiv,below=research,column=0]{B}
+%
+%\end{posterbox}
+%
+%\begin{posterbox}[name=cards
+%                 ,span=2
+%                 ,column=1]{C}
+%\end{posterbox}
+%
+%\begin{posterbox}[name=goodness
+%                 ,below=motiv
+%                 ]{D}
+%
+%\end{posterbox}
+%
+%
+%\begin{posterbox}[name=presentation
+%                 ,below=cards
+%                 ,column=2]{E}
+%\end{posterbox}
+%
+%
+%
+%\begin{posterbox}[name=quality
+%                 ,below=cards
+%                 ,column=1
+%                 ,above=bottom]{F}
+%\end{posterbox}
+%
+%\begin{posterbox}[name=eval
+%                 ,below=goodness, above=bottom]{G}
+%\end{posterbox}
+
+
+% \begin{posterbox}[name=funding
+%                 ,below=presentation
+%                 ,column=2
+%                 ,above=bottom
+%                 ,headerborder=none
+%                 ,textborder=none]{}
+%\vspace{-0.75em}
+%\begin{singlespace}\smaller[2]
+%
+%\end{singlespace}
+%\end{posterbox}
+\end{strathclydeposter}
+\end{document}
