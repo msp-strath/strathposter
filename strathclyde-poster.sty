@@ -82,7 +82,7 @@
 
 
 %% -------------------------------------------------- [ New Poster Environment ]
-\NewEnviron{strathclydeposter}[1]{%
+\newenvironment{strathclydeposter}{%
 \begin{poster}{
 %% ----------------------------------------------------------------- [ Options ]
  grid=false,
@@ -119,8 +119,8 @@
 {\sffamily\large\@author\\[0.1em]\@institute}
 %% -------------------------------------------------------------------- [ Logo ]
 {\@logocommand}
-\BODY
-\end{poster}}
+}
+{\end{poster}}
 
 \DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
 \def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
