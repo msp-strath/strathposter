@@ -62,15 +62,15 @@
 %\setstretch{1.2} % Line spacing
 
 %% Enum Item
-\setitemize{topsep=0.2em,parsep=0.25em,itemsep=0.0125ex}%,nolistsep}
-\setenumerate{noitemsep,nolistsep}
-\setdescription{font=\sffamily\protect\color{poster-color-primary},
+\setitemize{noitemsep}%,nolistsep}
+\setenumerate{noitemsep}
+\setdescription{font=\sffamily\protect\color{\STRATH@maincolour},
                 leftmargin=1em
 }
 
 % Compact Lists
 \newlist{compactitem}{itemize}{3}
-\setlist[compactitem]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt}
+\setlist[compactitem]{noitemsep}
 \setlist[compactitem,1]{label=--}
 \setlist[compactitem,2]{label=\textbullet}
 \setlist[compactitem,3]{label=*}
@@ -79,7 +79,7 @@
 \setlist[compactdesc]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt}
 
 \newlist{compactenum}{enumerate}{3}
-\setlist[compactenum]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt}
+\setlist[compactenum]{noitemsep}
 \setlist[compactenum,1]{label=\arabic*)}
 \setlist[compactenum,2]{label=\alph*)}
 \setlist[compactenum,3]{label=\roman*)}
@@ -120,7 +120,7 @@
  headershape=roundedright,
  headerfont=\@headerFontStyle,
 %% -------------------------------------------------------------- [ Box Format ]
- textfont=\@bodyFontStyle\sffamily\large,
+ textfont=\@bodyFontStyle,
  textborder=roundedleft,
 % boxColorOne=black!20,      % l
 % boxColorTwo=white ,     % r
