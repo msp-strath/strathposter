@@ -1,14 +1,16 @@
 \ProvidesPackage{strathclyde-poster}
 
 %% --------------------------------------------------------- [ Declare Options ]
+\RequirePackage{ifthen}
 \RequirePackage{kvoptions}
-\RequirePackage{kvoptions-patch}
 \SetupKeyvalOptions{%
   family=strath,
   prefix=STRATH@,
 }
 
 \DeclareStringOption[4]{columns}
+\DeclareStringOption[strath-blue]{maincolour}
+\DeclareBoolOption[false]{leftlogo}
 
 \ProcessKeyvalOptions*
 %% ----------------------------------------------------------------- [ Imports ]
@@ -21,9 +23,7 @@
 %% Fonts
 \RequirePackage[T1]{fontenc}
 \RequirePackage[protrusion=true, expansion=true]{microtype}
-\RequirePackage{tgbonum}
 \RequirePackage[scaled]{helvet}
-\RequirePackage{tgcursor}
 \RequirePackage{xspace}
 % Colours
 \RequirePackage{strathclyde-colours}
@@ -40,11 +40,20 @@
 %% ---------------------------------------------------------------- [ Commands ]
 \newcommand{\institute}[1]{\gdef\@institute{#1}}
 \newcommand{\email}[1]{\texttt{#1}}
-\newcommand{\logocommand}[1]{\gdef\@logocommand{#1}}
-%\newcommand{\eyecatch}[1]{\gdef\@eyecatch{#1}}
+
+\newcommand{\logoleft}[1]{\gdef\@logocommandleft{#1}}
+
+\newcommand{\logoright}[1]{\gdef\@logocommandright{#1}}
+
+\logoleft{}\logoright{}
+
 %% ----------------------------------------------------------------- [ Styling ]
 
-\colorlet{poster-color-primary}{strath-blue}
+\newcommand{\setHeaderFontStyle}[1]{\gdef\@headerFontStyle{#1}}
+\setHeaderFontStyle{\Large\sffamily\bfseries}
+
+\newcommand{\setBodyFontStyle}[1]{\gdef\@bodyFontStyle{#1}}
+\setBodyFontStyle{\large\sffamily}
 
 %% Footnote
 \renewcommand{\footnotelayout}{\scriptsize\sffamily\raggedright}
@@ -76,50 +85,55 @@
 \setlist[compactenum,3]{label=\roman*)}
 
 %% Coloured Highlighting
-\newcommand{\zoom}[1]{\textcolor{poster-color-primary}{\textbf{#1}}}
-\newcommand{\highlight}[1]{\textcolor{poster-color-primary}{\textbf{#1}}}
-\newcommand{\desc}[1]{\textcolor{poster-color-primary}{\bfseries\sffamily\large #1}\xspace}
-
+\newcommand{\zoom}[1]{\textcolor{\STRATH@maincolour}{\textbf{#1}}}
+\newcommand{\highlight}[1]{\textcolor{\STRATH@maincolour}{\textbf{#1}}}
+\newcommand{\desc}[1]{\textcolor{\STRATH@maincolour}{\bfseries\sffamily\large #1}\xspace}
 
 %% -------------------------------------------------- [ New Poster Environment ]
-\newenvironment{strathclydeposter}{%
-\begin{poster}{
+\ifthenelse{
+  \boolean{STRATH@leftlogo}
+}{
+  \setkeys[ba]{poster}{eyecatcher=true}
+}{
+  \setkeys[ba]{poster}{eyecatcher=false}
+}
+\newenvironment{strathclydeposter}
+{%
+\begin{poster}{%
 %% ----------------------------------------------------------------- [ Options ]
  grid=false,
  colspacing=1.3em,  % Column spacing
  linewidth=2pt,
- eyecatcher=false,
  columns=\STRATH@columns,
 %% -------------------------------------------------------------- [ Background ]
 % bgColorOne=white,  % primary
 % bgColorTwo=white,  % secondary
  background=none,   % use
- borderColor=poster-color-primary,
+ borderColor=\STRATH@maincolour,
 %% ------------------------------------------------------------- [ Box Headers ]
- headerColorOne=poster-color-primary, % primary
- headerColorTwo=poster-color-primary!20, % secondary
+ headerColorOne=\STRATH@maincolour, % primary
+ headerColorTwo=\STRATH@maincolour!20, % secondary
  headershade=plain,        % use
  headerFontColor=white,
  headerborder=open,
  headerheight=0.12\textheight,
  headershape=roundedright,
- headerfont=\Large\sffamily\bfseries,
+ headerfont=\@headerFontStyle,
 %% -------------------------------------------------------------- [ Box Format ]
- textfont=\sffamily\large,
+ textfont=\@bodyFontStyle\sffamily\large,
  textborder=roundedleft,
 % boxColorOne=black!20,      % l
 % boxColorTwo=white ,     % r
  boxshade=none          % Shade direction
 }
 %% ------------------------------------------------------------- [ Eye Catcher ]
-{\@eyecatch}
+{\ifthenelse{\boolean{STRATH@leftlogo}}{\@logocommandleft}{}}
 %% ------------------------------------------------------------------- [ Title ]
 {\sffamily\huge\@title\vspace{0.2em}}
 %% ----------------------------------------------------------------- [ Authors ]
 {\sffamily\large\@author\\[0.1em]\@institute}
 %% -------------------------------------------------------------------- [ Logo ]
-{\@logocommand}
-}
+{\@logocommandright}}
 {\end{poster}}
 
 \DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}

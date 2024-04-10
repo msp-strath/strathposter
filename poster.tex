@@ -11,7 +11,7 @@
 \usepackage[all,error]{onlyamsmath}
 
 \usepackage{strathclyde-colours}
-\usepackage[columns=4]{strathclyde-poster}
+\usepackage[columns=4,maincolour=strath-green]{strathclyde-poster}
 
 \usepackage{lmodern}
 \usepackage{multicol}
@@ -43,10 +43,9 @@
 
 \institute{Mathematical Structured Programming, University of Strathclyde}
 
-\logocommand{\includegraphics
+\logoright{\includegraphics
                  [height=0.08\paperheight]
                  {strath_science}}
-
 
 \begin{document}
 \begin{strathclydeposter}
@@ -66,9 +65,10 @@ a
   , column=1
   , span=2
   , textborder=rounded
+  , headerborder=closed
   , headershape=rounded
   , boxshade=plain
-  , boxColorOne=strath-blue
+  , boxColorOne=strath-green
   , textfont=\sffamily\large\color{white}
   ]{\phantom{a}}
 
@@ -130,3 +130,8 @@ a
 %\end{posterbox}
 \end{strathclydeposter}
 \end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
