@@ -19,7 +19,7 @@ EXTENSIONS := -auto_identifiers
 .PHONY: preview
 
 preview:
-	${LATEXMK} ${LATEXMK_OPTS} -gg -pvc $<
+	${LATEXMK} ${LATEXMK_OPTS} -gg -pvc poster.tex
 
 
 # -- [ Cleaning ]
